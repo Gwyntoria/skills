@@ -1,6 +1,7 @@
 {
-  "name": "skills",
+  "name": "gwyn-space-skills",
   "version": "1.0.0",
+  "private": true,
   "description": "The agent guidelines and skills I created.",
   "homepage": "https://github.com/Gwyntoria/skills#readme",
   "bugs": {
