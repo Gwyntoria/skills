@@ -1,4 +1,4 @@
-# Codex Agent Guide
+# Global Agent Instructions
 
 ## Communication
 
@@ -9,7 +9,7 @@
 - Ask at most 3 follow-up questions, and only when they help with further learning or decision-making. Mark them as `Q1`, `Q2`, and `Q3`.
 - Spell out a technical abbreviation on first use, such as LLM(Large Language Model).
 
-## Coding Principles
+## Coding Rules
 
 - Read the relevant context before modifying code. When modifying code, also read the callers, data structures, error-handling paths, and tests.
 - Keep changes minimal. Modify only content directly related to the current task.
