@@ -13,4 +13,8 @@ Avoid running broad auto-fix commands unless the task is specifically to clean u
 
 ## Folder Structure
 
-Skills are organized into bucket folders under `skills/`. Agent instructions are under `./instructions`.
+Skill source documents are organized into bucket folders under `skills/` and are used by the `npx skills` and Claude marketplace installation paths. Codex requires skill directories directly under `plugins/gwyn-space-skills/skills/`, so its synchronized copies remain flat.
+
+When changing a skill under the root `skills/` directory, apply the same content change to the directory with the same skill name under `plugins/gwyn-space-skills/skills/`.
+
+Agent instructions are under `./instructions`.

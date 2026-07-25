@@ -1,0 +1,35 @@
+{
+  "name": "gwyn-space",
+  "owner": {
+    "name": "Gwyntoria"
+  },
+  "description": "Gwyn Space agent skills for engineering, reporting, and Chinese writing.",
+  "renames": {
+    "gwyn-space-skills": "gwyn-space-skills-work",
+    "dialog": "gwyn-space-skills-dialog"
+  },
+  "plugins": [
+    {
+      "name": "gwyn-space-skills-work",
+      "source": "./",
+      "description": "Reusable engineering and reporting skills.",
+      "category": "productivity",
+      "strict": false,
+      "skills": [
+        "./skills/work/daily-weekly-reporting",
+        "./skills/work/scan-codebase"
+      ]
+    },
+    {
+      "name": "gwyn-space-skills-dialog",
+      "source": "./",
+      "description": "Chinese writing and analysis skills.",
+      "category": "productivity",
+      "strict": false,
+      "skills": [
+        "./skills/dialog/hecaitou",
+        "./skills/dialog/wangshuo"
+      ]
+    }
+  ]
+}
