@@ -1,0 +1,32 @@
+# AI Assistant Configuration
+# CLAUDE.md and AGENTS.md are tracked (project instructions for contributors
+# and agents). Local-only overrides stay ignored.
+.claude/
+.codex/
+.agent/
+.qoder/
+CLAUDE.local.md
+AGENTS.override.md
+skills-lock.json
+
+# Distribution
+/dist/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
