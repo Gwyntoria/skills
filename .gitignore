@@ -3,6 +3,7 @@
 # and agents). Local-only overrides stay ignored.
 .claude/
 .codex/
+.agents/
 .agent/
 .qoder/
 CLAUDE.local.md
