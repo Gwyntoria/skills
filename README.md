@@ -4,10 +4,10 @@
 
 | Skill | 适用场景 | 主要输出 |
 | --- | --- | --- |
-| [`daily-weekly-reporting`](skills/work/daily-weekly-reporting/SKILL.md) | 根据 Git 记录编写中文日报、周报或工作总结 | 区分已提交成果、未提交进展和待验证事项的工作报告 |
-| [`scan-codebase`](skills/work/scan-codebase/SKILL.md) | 阅读实现代码前，先从 Git 历史判断仓库阶段与风险区域 | 当前阶段判断、风险地图和代码阅读顺序 |
-| [`hecaitou`](skills/dialog/hecaitou/SKILL.md) | 从日常观察切入，分析平台、产品、关系与个人边界 | 带有具体场景、机制分析和边界意识的中文长文 |
 | [`wangshuo`](skills/dialog/wangshuo/SKILL.md) | 分析组织、市场、公共议题和个人重大选择等复杂问题 | 证据分级、激励与博弈分析、有限判断和行动条件 |
+| [`hecaitou`](skills/dialog/hecaitou/SKILL.md) | 从日常观察切入，分析平台、产品、关系与个人边界 | 带有具体场景、机制分析和边界意识的中文长文 |
+| [`scan-codebase`](skills/work/scan-codebase/SKILL.md) | 阅读实现代码前，先从 Git 历史判断仓库阶段与风险区域 | 当前阶段判断、风险地图和代码阅读顺序 |
+| [`daily-weekly-reporting`](skills/work/daily-weekly-reporting/SKILL.md) | 根据 Git 记录编写中文日报、周报或工作总结 | 区分已提交成果、未提交进展和待验证事项的工作报告 |
 
 `hecaitou` 与 `wangshuo` 使用 [dot-skill](https://github.com/titanwings/colleague-skill) 从公开材料中提炼的写作和分析方法。不代表本人立场，也不用于拼贴或复写原文。
 
@@ -16,19 +16,19 @@
 在支持 Skills 的 Agent 中，可以直调用：
 
 ```text
-使用 $scan-codebase 扫描当前仓库，先不要读取实现代码。
-```
-
-```text
-使用 $daily-weekly-reporting，根据今天所有分支的 Git 记录写一份日报。
-```
-
-```text
 使用 $wangshuo 分析这个决策，区分事实、推论、风险和未知。
 ```
 
 ```text
 使用 $hecaitou 把这件日常小事写成一篇中文随笔，保留不确定性。
+```
+
+```text
+使用 $scan-codebase 扫描当前仓库，先不要读取实现代码。
+```
+
+```text
+使用 $daily-weekly-reporting，根据今天所有分支的 Git 记录写一份日报。
 ```
 
 ## Instructions
