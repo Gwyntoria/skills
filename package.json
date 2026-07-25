@@ -1,0 +1,26 @@
+{
+  "name": "skills",
+  "version": "1.0.0",
+  "description": "The agent guidelines and skills I created.",
+  "homepage": "https://github.com/Gwyntoria/skills#readme",
+  "bugs": {
+    "url": "https://github.com/Gwyntoria/skills/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gwyntoria/skills.git"
+  },
+  "license": "ISC",
+  "author": "Gwyntotia",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.23.1",
+    "textlint": "^15.7.1",
+    "textlint-rule-ja-space-between-half-and-full-width": "^3.0.2",
+    "textlint-rule-no-todo": "^2.0.1",
+    "textlint-rule-prh": "^6.1.0",
+    "textlint-rule-zh-half-and-full-width-bracket": "^1.1.0"
+  }
+}

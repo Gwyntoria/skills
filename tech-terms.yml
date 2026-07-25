@@ -1,0 +1,358 @@
+version: 1
+rules:
+  - expected: JavaScript
+    patterns:
+      - Javascript
+      - javascript
+    specs:
+      - from: Javascript
+        to: JavaScript
+      - from: javascript
+        to: JavaScript
+
+  - expected: TypeScript
+    patterns:
+      - Typescript
+      - typescript
+    specs:
+      - from: Typescript
+        to: TypeScript
+      - from: typescript
+        to: TypeScript
+
+  - expected: Node.js
+    patterns:
+      - NodeJS
+      - Nodejs
+      - nodejs
+      - node.js
+    specs:
+      - from: NodeJS
+        to: Node.js
+      - from: nodejs
+        to: Node.js
+      - from: node.js
+        to: Node.js
+
+  - expected: VS Code
+    patterns:
+      - VSCode
+      - vscode
+      - VScode
+    specs:
+      - from: VSCode
+        to: VS Code
+      - from: vscode
+        to: VS Code
+
+  - expected: GitHub
+    patterns:
+      - Github
+      - github
+    specs:
+      - from: Github
+        to: GitHub
+      - from: github
+        to: GitHub
+
+  - expected: Markdown
+    patterns:
+      - markdown
+    specs:
+      - from: markdown
+        to: Markdown
+
+  - expected: CMake
+    patterns:
+      - cmake
+    specs:
+      - from: cmake
+        to: CMake
+
+  - expected: GCC
+    patterns:
+      - gcc
+    specs:
+      - from: gcc
+        to: GCC
+
+  - expected: GDB
+    patterns:
+      - gdb
+    specs:
+      - from: gdb
+        to: GDB
+
+  - expected: GNU
+    patterns:
+      - gnu
+    specs:
+      - from: gnu
+        to: GNU
+
+  - expected: textlint
+    patterns:
+      - Textlint
+    specs:
+      - from: Textlint
+        to: textlint
+
+  - expected: markdownlint
+    patterns:
+      - Markdownlint
+      - markdownLint
+    specs:
+      - from: Markdownlint
+        to: markdownlint
+      - from: markdownLint
+        to: markdownlint
+
+  - expected: macOS
+    patterns:
+      - MacOS
+      - Macos
+      - macos
+    specs:
+      - from: MacOS
+        to: macOS
+      - from: Macos
+        to: macOS
+      - from: macos
+        to: macOS
+
+  - expected: Linux
+    patterns:
+      - linux
+    specs:
+      - from: linux
+        to: Linux
+
+  - expected: Windows
+    patterns:
+      - windows
+    specs:
+      - from: windows
+        to: Windows
+
+  - expected: Ubuntu
+    patterns:
+      - ubuntu
+    specs:
+      - from: ubuntu
+        to: Ubuntu
+
+  - expected: Debian
+    patterns:
+      - debian
+    specs:
+      - from: debian
+        to: Debian
+
+  - expected: CentOS
+    patterns:
+      - centos
+    specs:
+      - from: centos
+        to: CentOS
+
+  - expected: API
+    patterns:
+      - api
+    specs:
+      - from: api
+        to: API
+
+  - expected: URL
+    patterns:
+      - url
+    specs:
+      - from: url
+        to: URL
+
+  - expected: HTTP
+    patterns:
+      - http
+    specs:
+      - from: http
+        to: HTTP
+
+  - expected: HTTPS
+    patterns:
+      - https
+    specs:
+      - from: https
+        to: HTTPS
+
+  - expected: WebSocket
+    patterns:
+      - websocket
+    specs:
+      - from: websocket
+        to: WebSocket
+
+  - expected: JSON
+    patterns:
+      - json
+    specs:
+      - from: json
+        to: JSON
+
+  - expected: YAML
+    patterns:
+      - yml
+      - yaml
+    specs:
+      - from: yaml
+        to: YAML
+      - from: yml
+        to: YAML
+
+  - expected: Nginx
+    patterns:
+      - nginx
+    specs:
+      - from: nginx
+        to: Nginx
+
+  - expected: WebRTC
+    patterns:
+      - webrtc
+    specs:
+      - from: webrtc
+        to: WebRTC
+
+  - expected: RTMP
+    patterns:
+      - rtmp
+    specs:
+      - from: rtmp
+        to: RTMP
+
+  - expected: FreeRTOS
+    patterns:
+      - freertos
+    specs:
+      - from: freertos
+        to: FreeRTOS
+
+  - expected: FreeType
+    patterns:
+      - freetype
+    specs:
+      - from: freetype
+        to: FreeType
+
+  - expected: SDL_ttf
+    patterns:
+      - sdl_ttf
+    specs:
+      - from: sdl_ttf
+        to: SDL_ttf
+
+  - expected: U-Boot
+    patterns:
+      - uboot
+      - Uboot
+      - /U-boot/
+    specs:
+      - from: uboot
+        to: U-Boot
+      - from: Uboot
+        to: U-Boot
+      - from: U-boot
+        to: U-Boot
+
+  - expected: VMware
+    patterns:
+      - vmware
+      - VMWare
+    specs:
+      - from: vmware
+        to: VMware
+      - from: VMWare
+        to: VMware
+
+  - expected: MySQL
+    patterns:
+      - mysql
+    specs:
+      - from: mysql
+        to: MySQL
+
+  - expected: Redis
+    patterns:
+      - redis
+    specs:
+      - from: redis
+        to: Redis
+
+  - expected: OpenAI
+    patterns:
+      - openai
+    specs:
+      - from: openai
+        to: OpenAI
+
+  - expected: ChatGPT
+    patterns:
+      - chatgpt
+    specs:
+      - from: chatgpt
+        to: ChatGPT
+
+  - expected: Machine Learning
+    patterns:
+      - machine learning
+      - Machine learning
+    specs:
+      - from: machine learning
+        to: Machine Learning
+      - from: Machine learning
+        to: Machine Learning
+
+  - expected: C++
+    patterns:
+      - cpp
+      - Cpp
+    specs:
+      - from: cpp
+        to: C++
+      - from: Cpp
+        to: C++
+
+  - expected: RAII
+    patterns:
+      - raii
+    specs:
+      - from: raii
+        to: RAII
+
+  - expected: copy-on-write
+    patterns:
+      - /Copy[-]On[-]Write/
+      - /Copy[-]on[-]write/
+      - copy on write
+    specs:
+      - from: Copy-On-Write
+        to: copy-on-write
+      - from: Copy-on-write
+        to: copy-on-write
+      - from: copy on write
+        to: copy-on-write
+
+  - expected: mmap
+    patterns:
+      - Mmap
+      - MMAP
+    specs:
+      - from: Mmap
+        to: mmap
+      - from: MMAP
+        to: mmap
+
+  - expected: Typora
+    patterns:
+      - typora
+    specs:
+      - from: typora
+        to: Typora

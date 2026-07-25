@@ -1,0 +1,23 @@
+{
+    "rules": {
+        "ja-space-between-half-and-full-width": {
+            "space": "always",
+            "exceptPunctuation": true,
+            "lintStyledNode": true
+        },
+        "zh-half-and-full-width-bracket": {
+            "bracket": "mixed"
+        },
+        "no-todo": true,
+        "prh": {
+            "rulePaths": [
+                "./tech-terms.yml"
+            ],
+            "checkHeader": true,
+            "checkParagraph": true,
+            "checkBlockQuote": true,
+            "checkEmphasis": true,
+            "checkLink": false
+        }
+    }
+}
