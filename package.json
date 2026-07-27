@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/Gwyntoria/skills.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "Gwyntotia",
   "scripts": {
     "format:md": "markdownlint-cli2 --fix && textlint --fix --ignore-path .gitignore \"**/*.md\"",
