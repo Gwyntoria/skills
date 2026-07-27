@@ -5,15 +5,68 @@ set -euo pipefail
 # It is not a supported installer. Modifications to it — or requests for
 # modifications — will not be approved.
 #
-# Links all skills in the repository into the local skill directories used by
-# each agent harness:
-# - ~/.claude/skills — Claude Code
-# - ~/.agents/skills — Codex and other Agent Skills-compatible harnesses
+# Links all skills in the repository into ~/.agents/skills by default.
+# Pass --claude to also link them into ~/.claude/skills, or --codex to link
+# them only into ~/.codex/skills and remove matching entries from ~/.agents.
 # Each entry is a symlink into this repo, so a `git pull` is all that's needed
 # to keep installed skills up to date.
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
-DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills")
+AGENTS_DEST="$HOME/.agents/skills"
+mode="agents"
+for arg in "$@"; do
+	case "$arg" in
+	--claude)
+		if [ "$mode" = "codex" ]; then
+			echo "error: --claude and --codex cannot be used together." >&2
+			exit 2
+		fi
+		mode="claude"
+		;;
+	--codex)
+		if [ "$mode" = "claude" ]; then
+			echo "error: --claude and --codex cannot be used together." >&2
+			exit 2
+		fi
+		mode="codex"
+		;;
+	*)
+		echo "usage: $0 [--claude | --codex]" >&2
+		exit 2
+		;;
+	esac
+done
+
+case "$mode" in
+claude)
+	DESTS=("$AGENTS_DEST" "$HOME/.claude/skills")
+	;;
+codex)
+	DESTS=("$HOME/.codex/skills")
+	;;
+*)
+	DESTS=("$AGENTS_DEST")
+	;;
+esac
+
+ensure_destination_is_safe() {
+	local dest="$1"
+	local resolved
+
+	if [ ! -L "$dest" ]; then
+		return
+	fi
+
+	resolved="$(readlink -f "$dest")"
+	case "$resolved" in
+	"$REPO"|"$REPO"/*)
+		echo "error: $dest is a symlink into this repo ($resolved)." >&2
+		echo "Remove it (rm \"$dest\") and re-run." >&2
+		exit 1
+		;;
+	esac
+}
+
 # Collect the repo's skills once, link into every destination.
 names=()
 srcs=()
@@ -23,20 +76,16 @@ while IFS= read -r -d '' skill_md; do
 	srcs+=("$src")
 done < <(find "$REPO/skills" -name SKILL.md -not -path '*/node_modules/*' -not -path '*/deprecated/*' -print0)
 
+if [ "$mode" = "codex" ]; then
+	# Validate the cleanup destination before creating any Codex links.
+	ensure_destination_is_safe "$AGENTS_DEST"
+fi
+
 for DEST in "${DESTS[@]}"; do
 	# If $DEST is a symlink that resolves into this repo, we'd end up writing the
 	# per-skill symlinks back into the repo's own skills/ tree. Detect and bail
 	# out instead of polluting the working copy.
-	if [ -L "$DEST" ]; then
-		resolved="$(readlink -f "$DEST")"
-		case "$resolved" in
-		"$REPO"|"$REPO"/*)
-			echo "error: $DEST is a symlink into this repo ($resolved)." >&2
-			echo "Remove it (rm \"$DEST\") and re-run; the script will recreate it as a real dir." >&2
-			exit 1
-			;;
-		esac
-	fi
+	ensure_destination_is_safe "$DEST"
 
 	mkdir -p "$DEST"
 	for i in "${!names[@]}"; do
@@ -50,3 +99,14 @@ for DEST in "${DESTS[@]}"; do
 		echo "linked $name -> $src ($DEST)"
 	done
 done
+
+if [ "$mode" = "codex" ]; then
+	# Codex uses its own skill directory, so remove matching shared skill entries.
+	for name in "${names[@]}"; do
+		target="$AGENTS_DEST/$name"
+		if [ -e "$target" ] || [ -L "$target" ]; then
+			rm -rf -- "$target"
+			echo "removed $target"
+		fi
+	done
+fi
