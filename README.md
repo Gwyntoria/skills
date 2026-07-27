@@ -1,5 +1,7 @@
 # Gwyn Space Skills
 
+![Gwyn Space Skills 技能星图](assets/readme-hero.svg)
+
 ## Skills
 
 | Skill | 适用场景 | 主要输出 |

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title description">
+  <title id="title">Gwyn Space Skills</title>
+  <desc id="description">A skill constellation connecting four reusable agent skills.</desc>
+
+  <rect width="1200" height="400" rx="28" fill="#17181b"/>
+
+  <g fill="#f3efe6">
+    <text x="76" y="166" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-style="italic" letter-spacing="-2">Gwyn Space</text>
+    <text x="79" y="235" font-family="ui-monospace, 'SFMono-Regular', Consolas, monospace" font-size="48" font-weight="600" letter-spacing="8">SKILLS</text>
+  </g>
+
+  <path d="M570 76V324" stroke="#f3efe6" stroke-opacity=".22"/>
+
+  <g stroke="#f3efe6" stroke-opacity=".38" stroke-width="2" fill="none">
+    <path d="M820 200L698 112"/>
+    <path d="M820 200L707 294"/>
+    <path d="M820 200L977 102"/>
+    <path d="M820 200L1008 278"/>
+  </g>
+
+  <g fill="#f2b84b">
+    <path d="M820 165L829 190L855 200L829 210L820 235L811 210L785 200L811 190Z"/>
+    <circle cx="698" cy="112" r="18"/>
+    <circle cx="707" cy="294" r="18"/>
+  </g>
+
+  <g fill="#78a6c8">
+    <rect x="960" y="85" width="34" height="34" rx="8"/>
+    <rect x="991" y="261" width="34" height="34" rx="8"/>
+  </g>
+
+  <g fill="#17181b">
+    <path d="M690 106h7v7h-4v5h-6v-8c0-2 1-4 3-4Zm10 0h7v7h-4v5h-6v-8c0-2 1-4 3-4Z"/>
+    <path d="M699 288h7v7h-4v5h-6v-8c0-2 1-4 3-4Zm10 0h7v7h-4v5h-6v-8c0-2 1-4 3-4Z"/>
+    <path d="M973 95l-6 7 6 7M981 95l6 7-6 7" stroke="#17181b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1001 270h14v16h-14Zm3-4h14v16" stroke="#17181b" stroke-width="3" fill="none" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="ui-monospace, 'SFMono-Regular', Consolas, monospace" font-size="16" letter-spacing=".5">
+    <text x="626" y="78" fill="#f2b84b">wangshuo</text>
+    <text x="613" y="337" fill="#f2b84b">hecaitou</text>
+    <text x="1009" y="79" fill="#78a6c8">scan-codebase</text>
+    <text x="1042" y="320" fill="#78a6c8">daily-weekly-</text>
+    <text x="1042" y="342" fill="#78a6c8">reporting</text>
+  </g>
+</svg>
