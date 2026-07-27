@@ -9,8 +9,6 @@
 | [`scan-codebase`](skills/work/scan-codebase/SKILL.md) | 阅读实现代码前，先从 Git 历史判断仓库阶段与风险区域 | 当前阶段判断、风险地图和代码阅读顺序 |
 | [`daily-weekly-reporting`](skills/work/daily-weekly-reporting/SKILL.md) | 根据 Git 记录编写中文日报、周报或工作总结 | 区分已提交成果、未提交进展和待验证事项的工作报告 |
 
-`hecaitou` 与 `wangshuo` 使用 [dot-skill](https://github.com/titanwings/colleague-skill) 从公开材料中提炼的写作和分析方法。不代表本人立场，也不用于拼贴或复写原文。
-
 ### 使用示例
 
 在支持 Skills 的 Agent 中，可以直调用：
@@ -31,19 +29,24 @@
 使用 $daily-weekly-reporting，根据今天所有分支的 Git 记录写一份日报。
 ```
 
+### 补充说明
+
+- `hecaitou` 与 `wangshuo` 使用 [dot-skill](https://github.com/titanwings/colleague-skill) 从公开材料中提炼的写作和分析方法。输出具有一定启发性，但与本人仍有不少差别，感兴趣的可以阅读他们的文章，再用相同的话题提问 AI。
+- `scan-codebase` 所执行的内容来自 [The Git Commands I Run Before Reading Any Code](https://piechowski.io/post/git-commands-before-reading-code/) 中提到的 git 命令，适合接手新代码库时运行，了解仓库现状。
+
 ## Instructions
 
 | 文件 | 适用范围 |
 | --- | --- |
-| [`instructions/global.md`](instructions/global.md) | 全局 Agent Instructions，可放在 Agent 的配置目录中，如 `~/.codex/`、`~/.claude/` |
-| [`instructions/c-project.md`](instructions/c-project.md) | C/C++ 项目的格式、命名、注释和提交信息约定 |
-| [`instructions/writing.md`](instructions/writing.md) | Markdown 写作仓库的资源路径、引用方式和格式检查规则 |
+| [`global.md`](instructions/global.md) | 全局 Agent Instructions，可放在 Agent 的配置目录中，如 `~/.codex/`、`~/.claude/` |
+| [`c-project.md`](instructions/c-project.md) | C/C++ 项目的格式、命名、注释和提交信息约定 |
+| [`writing.md`](instructions/writing.md) | Markdown 写作仓库的资源路径、引用方式和格式检查规则 |
 
 这些 instruction 是可复用的规则片段。使用时应根据目标 Agent 的配置方式，选择适用文件并合并到项目指令中。
 
 ### 补充说明
 
-[`instructions/global.md`](instructions/global.md) 中的以下规则来源于 [Waza 项目的 `rules` 目录](https://github.com/tw93/Waza/tree/main/rules)，并按个人使用习惯做了调整：
+[`global.md`](instructions/global.md) 中的以下规则来源于 [Waza 项目的 `rules` 目录](https://github.com/tw93/Waza/tree/main/rules)，并按个人使用习惯做了调整：
 
 - [`Chinese Anti-AI Patterns`](instructions/global.md#chinese-anti-ai-patterns)：源自 Waza 的 [`rules/chinese.md`](https://github.com/tw93/Waza/blob/main/rules/chinese.md)。
 - [`English Coaching`](instructions/global.md#english-coaching)：源自 Waza 的 [`rules/english.md`](https://github.com/tw93/Waza/blob/main/rules/english.md)。
