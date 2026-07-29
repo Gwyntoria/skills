@@ -20,6 +20,7 @@ skills-lock.json
 .DS_Store
 
 # Python
+.venv/
 __pycache__/
 *.pyc
 
@@ -34,3 +35,5 @@ package-lock.json
 *.swp
 *.swo
 *~
+
+.baoyu-skills
