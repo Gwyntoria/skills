@@ -18,3 +18,17 @@ Skill source documents are organized into bucket folders under `skills/` and are
 When changing a skill under the root `skills/` directory, apply the same content change to the directory with the same skill name under `plugins/gwyn-space-skills/skills/`.
 
 Agent instructions are under `./instructions`.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and PRDs are tracked in this repo's GitHub Issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Triage uses the five default canonical labels. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Domain documentation uses the single-context layout. See `docs/agents/domain.md`.
