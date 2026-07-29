@@ -1,6 +1,6 @@
 # Gwyn Space Skills
 
-![Gwyn Space Skills 技能星图](assets/readme-hero.svg)
+![Gwyn Space Skills](assets/readme-hero.png)
 
 ## Skills
 
