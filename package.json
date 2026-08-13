@@ -14,8 +14,7 @@
   "license": "MIT",
   "author": "Gwyntotia",
   "scripts": {
-    "format:md": "markdownlint-cli2 --fix && textlint --fix --ignore-path .gitignore \"**/*.md\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format:md": "markdownlint-cli2 --fix && textlint --fix --ignore-path .gitignore \"**/*.md\""
   },
   "devDependencies": {
     "markdownlint-cli2": "^0.23.1",

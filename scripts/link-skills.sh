@@ -11,8 +11,10 @@ set -euo pipefail
 # Each entry is a symlink into this repo, so a `git pull` is all that's needed
 # to keep installed skills up to date.
 
-REPO="$(cd "$(dirname "$0")/.." && pwd)"
-AGENTS_DEST="$HOME/.agents/skills"
+REPO="$(cd "$(dirname "$0")/.." && pwd -P)"
+# Tests can isolate link destinations without changing the maintainer's home.
+LINK_HOME="${SKILLS_LINK_HOME:-$HOME}"
+AGENTS_DEST="$LINK_HOME/.agents/skills"
 mode="agents"
 for arg in "$@"; do
 	case "$arg" in
@@ -39,10 +41,10 @@ done
 
 case "$mode" in
 claude)
-	DESTS=("$AGENTS_DEST" "$HOME/.claude/skills")
+	DESTS=("$AGENTS_DEST" "$LINK_HOME/.claude/skills")
 	;;
 codex)
-	DESTS=("$HOME/.codex/skills")
+	DESTS=("$LINK_HOME/.codex/skills")
 	;;
 *)
 	DESTS=("$AGENTS_DEST")
@@ -57,7 +59,10 @@ ensure_destination_is_safe() {
 		return
 	fi
 
-	resolved="$(readlink -f "$dest")"
+	if ! resolved="$(cd -P "$dest" 2>/dev/null && pwd -P)"; then
+		echo "error: cannot resolve destination symlink: $dest" >&2
+		exit 1
+	fi
 	case "$resolved" in
 	"$REPO"|"$REPO"/*)
 		echo "error: $dest is a symlink into this repo ($resolved)." >&2

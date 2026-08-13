@@ -2,29 +2,43 @@
 
 set -euo pipefail
 
-REPO="$(cd "$(dirname "$0")/.." && pwd)"
+REPO="$(cd "$(dirname "$0")/.." && pwd -P)"
 SOURCE_ROOT="$REPO/skills"
 PLUGIN_ROOT="$REPO/plugins/gwyn-space-skills"
 BACKUP_ROOT="$PLUGIN_ROOT/skills"
 
-mapfile -d '' source_skill_files < <(
-	find "$SOURCE_ROOT" -name SKILL.md -not -path '*/node_modules/*' -print0 | sort -z
-)
+source_skill_files=()
+while IFS= read -r skill_md; do
+	source_skill_files+=("$skill_md")
+done < <(find "$SOURCE_ROOT" -name SKILL.md -not -path '*/node_modules/*' -print | LC_ALL=C sort)
 
 if [ "${#source_skill_files[@]}" -eq 0 ]; then
 	echo "error: no source skills found in $SOURCE_ROOT." >&2
 	exit 1
 fi
 
-declare -A source_names=()
+contains_name() {
+	local sought="$1"
+	shift
+	local candidate
+
+	for candidate in "$@"; do
+		if [ "$candidate" = "$sought" ]; then
+			return 0
+		fi
+	done
+	return 1
+}
+
+source_names=()
 for skill_md in "${source_skill_files[@]}"; do
 	source_dir="${skill_md%/SKILL.md}"
 	name="${source_dir##*/}"
-	if [[ -v "source_names[$name]" ]]; then
+	if [ "${#source_names[@]}" -gt 0 ] && contains_name "$name" "${source_names[@]}"; then
 		echo "error: duplicate source skill name cannot be flattened: $name." >&2
 		exit 1
 	fi
-	source_names["$name"]="$source_dir"
+	source_names+=("$name")
 done
 
 if [ ! -d "$PLUGIN_ROOT" ]; then
