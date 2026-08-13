@@ -6,8 +6,9 @@ set -euo pipefail
 # modifications — will not be approved.
 #
 # Links all skills in the repository into ~/.agents/skills by default.
-# Pass --claude to also link them into ~/.claude/skills, or --codex to link
-# them only into ~/.codex/skills and remove matching entries from ~/.agents.
+# Pass --skill NAME to link only one skill. Pass --claude to also link skills
+# into ~/.claude/skills, or --codex to link them only into ~/.codex/skills and
+# remove matching entries from ~/.agents.
 # Each entry is a symlink into this repo, so a `git pull` is all that's needed
 # to keep installed skills up to date.
 
@@ -16,8 +17,13 @@ REPO="$(cd "$(dirname "$0")/.." && pwd -P)"
 LINK_HOME="${SKILLS_LINK_HOME:-$HOME}"
 AGENTS_DEST="$LINK_HOME/.agents/skills"
 mode="agents"
-for arg in "$@"; do
-	case "$arg" in
+selected_skill=""
+usage() {
+	echo "usage: $0 [--claude | --codex] [--skill NAME]" >&2
+}
+
+while [ "$#" -gt 0 ]; do
+	case "$1" in
 	--claude)
 		if [ "$mode" = "codex" ]; then
 			echo "error: --claude and --codex cannot be used together." >&2
@@ -32,11 +38,33 @@ for arg in "$@"; do
 		fi
 		mode="codex"
 		;;
+	--skill)
+		if [ -n "$selected_skill" ]; then
+			echo "error: --skill can only be specified once." >&2
+			usage
+			exit 2
+		fi
+		if [ "$#" -lt 2 ] || [ -z "$2" ]; then
+			echo "error: --skill requires a skill name." >&2
+			usage
+			exit 2
+		fi
+		case "$2" in
+		--*)
+			echo "error: --skill requires a skill name." >&2
+			usage
+			exit 2
+			;;
+		esac
+		selected_skill="$2"
+		shift
+		;;
 	*)
-		echo "usage: $0 [--claude | --codex]" >&2
+		usage
 		exit 2
 		;;
 	esac
+	shift
 done
 
 case "$mode" in
@@ -77,9 +105,24 @@ names=()
 srcs=()
 while IFS= read -r -d '' skill_md; do
 	src="$(dirname "$skill_md")"
-	names+=("$(basename "$src")")
+	name="$(basename "$src")"
+	if [ -n "$selected_skill" ] && [ "$name" != "$selected_skill" ]; then
+		continue
+	fi
+	names+=("$name")
 	srcs+=("$src")
 done < <(find "$REPO/skills" -name SKILL.md -not -path '*/node_modules/*' -not -path '*/deprecated/*' -print0)
+
+if [ -n "$selected_skill" ]; then
+	if [ "${#names[@]}" -eq 0 ]; then
+		echo "error: skill not found: $selected_skill" >&2
+		exit 1
+	fi
+	if [ "${#names[@]}" -gt 1 ]; then
+		echo "error: multiple skills named $selected_skill were found." >&2
+		exit 1
+	fi
+fi
 
 if [ "$mode" = "codex" ]; then
 	# Validate the cleanup destination before creating any Codex links.
