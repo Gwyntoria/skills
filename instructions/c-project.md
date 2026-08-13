@@ -12,10 +12,10 @@ C/C++ formatting follows the following rules:
 
   ```c
   ErrCode parse_setting_result_from_response(char* response,
-                                              ResultCode* code,
-                                              char* description,
-                                              ToolCall tool_call[],
-                                              int tool_call_num)
+                                             ResultCode* code,
+                                             char* description,
+                                             ToolCall tool_call[],
+                                             int tool_call_num)
   ```
 
 - Keep at most one consecutive empty line.
@@ -46,11 +46,10 @@ Do NOT run `clang-format` to format any changed C/C++ files.
 
   ```c
   typedef struct ActiveObject {
-      void* _context;
-      State _state;
-      MessageQueue* _msg // private variable
-
-      int
+      void*         _context;
+      State         _state;
+      MessageQueue* _msg     // private variable
+      int           pub_var; // public variable
   } ActiveObject;
   ```
 
