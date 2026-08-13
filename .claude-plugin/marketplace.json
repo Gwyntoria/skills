@@ -30,6 +30,14 @@
         "./skills/dialog/hecaitou",
         "./skills/dialog/wangshuo"
       ]
+    },
+    {
+      "name": "gwyn-space-skills-writing",
+      "source": "./",
+      "description": "Chinese writing review skills.",
+      "category": "productivity",
+      "strict": false,
+      "skills": ["./skills/writing/review-chinese-writing"]
     }
   ]
 }
